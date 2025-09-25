@@ -1,0 +1,313 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f1e9;
+}
+.hero-section {
+    background-image: url('https://placehold.co/1200x1800/d4c3b6/fff?text=Love');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 8rem; /* About 영역과 충분한 거리 확보 */
+}
+
+.hero-section h1, .hero-section p {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 
+                 0 0 20px rgba(0, 0, 0, 0.5),
+                 0 0 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 15;
+    margin-bottom: 1rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 0;
+}
+.section-padding {
+    padding: 4rem 1.5rem;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background-color: #ccc;
+}
+.calendar-header, .calendar-day {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.25rem;
+}
+.calendar-day.active {
+    background-color: #e5b1b1;
+    color: white;
+    font-weight: bold;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+.gallery-item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+/* 모달창 스타일 */
+#image-modal {
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+#modal-image {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#modal-close {
+    z-index: 10000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+#modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 캐러셀 버튼 스타일 */
+.carousel-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+/* 모달 카운터 스타일 */
+#modal-counter {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 모바일용 캐러셀 버튼 */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    #modal-prev {
+        left: 10px;
+    }
+    
+    #modal-next {
+        right: 10px;
+    }
+    
+    #modal-close {
+        top: 10px;
+        right: 10px;
+    }
+    
+    #modal-counter {
+        bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+/* 벚꽃 애니메이션 스타일 */
+.sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.sakura-petal {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffb3d9;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.8;
+    animation: sakura-fall linear infinite;
+    transform-origin: center;
+}
+
+.sakura-petal:nth-child(2n) {
+    background: #ffcce5;
+    border-radius: 0 50% 0 50%;
+}
+
+.sakura-petal:nth-child(3n) {
+    background: #ffe6f2;
+    width: 8px;
+    height: 8px;
+}
+
+.sakura-petal:nth-child(4n) {
+    background: #ff99d6;
+    width: 12px;
+    height: 12px;
+}
+
+.sakura-petal:nth-child(5n) {
+    background: #ffb3e6;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+}
+
+@keyframes sakura-fall {
+    0% {
+        transform: translateY(-100px) translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(25vh) translateX(20px) rotate(90deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(50vh) translateX(-20px) rotate(180deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(75vh) translateX(10px) rotate(270deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(100vh) translateX(-10px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 다른 섹션들도 벚꽃 위에 표시되도록 조정 */
+.section-padding {
+    position: relative;
+    z-index: 8;
+}
+
+/* 음악 제어 버튼 스타일 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffb3d9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.music-control:hover {
+    background: rgba(255, 179, 217, 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 179, 217, 0.4);
+}
+
+.music-control.playing {
+    animation: music-pulse 2s infinite;
+}
+
+.music-control.paused {
+    background: rgba(200, 200, 200, 0.9);
+}
+
+@keyframes music-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 6px 25px rgba(255, 179, 217, 0.6);
+    }
+}
+
+/* 모바일 환경을 위한 반응형 음악 버튼 */
+@media (max-width: 768px) {
+    .music-control {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* 터치 디바이스를 위한 개선 */
+@media (hover: none) {
+    .music-control:hover {
+        transform: none;
+    }
+    
+    .music-control:active {
+        transform: scale(0.95);
+    }
+}
