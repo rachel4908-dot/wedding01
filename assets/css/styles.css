@@ -311,3 +311,76 @@ body {
         transform: scale(0.95);
     }
 }
+
+/* 카운트다운 스타일 */
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.countdown > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown .desc {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+}
+
+.countdown .card {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    min-width: 3rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+    transition: all 0.3s ease;
+}
+
+.countdown .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 154, 158, 0.6);
+}
+
+.countdown span:not(.card) {
+    color: #ff9a9e;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.ft-gowun-bold {
+    font-weight: bold;
+}
+
+/* 모바일 대응 */
+@media (max-width: 640px) {
+    .countdown {
+        gap: 0.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .countdown .card {
+        padding: 0.5rem 0.75rem;
+        font-size: 1.25rem;
+        min-width: 2.5rem;
+    }
+    
+    .countdown .desc {
+        font-size: 0.75rem;
+    }
+    
+    .countdown span:not(.card) {
+        font-size: 1rem;
+    }
+}
